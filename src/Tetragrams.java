@@ -17,7 +17,7 @@ public class Tetragrams {
             while (s.hasNextLine()) {
                 String data = s.nextLine();
                 String tetragram = data.substring(0,data.indexOf(" ")).toLowerCase();
-                double count = Double.parseDouble(data.substring(data.indexOf(" ") + 1, data.length()));
+                double count = Double.parseDouble(data.substring(data.indexOf(" ") + 1, data.length()))/1000.0;
                 tetragrams.put(tetragram, count);
             }
         } catch (FileNotFoundException e) {

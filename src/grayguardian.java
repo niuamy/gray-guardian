@@ -1,26 +1,35 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 public class grayguardian {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-//        String s = "yffjeybyjibdtncbyxyojbkyfaufeacfkqicokjkciptfcyfteelcbdtyjifelqbdtojceqntmdotdctgftjcqkntyiblayjtmiuydfcemckknfkbpcdyuokapngbuftjmafryelftopiccjbfidjyfotpfdircbccimyktlcbykejodippnkexnckakbitnkatfiutgjkfttkddgtyidytfjtlyumkllbfdfjftijtddyepenpjejtiyosntktfsumnkkidjrkdtiycptjoteentnemddbojtfcglqfafymeodgktdettftxfmtbtdyjepanfittojutntdccekcdjmjnncjfidjkkbfdoanebfckmitlimgdpdonneektmecntykkfykoypeotcofdityagddrejiuekrifvoairqtftndikcetedpckjectnktkkkpnckybkfgojktjtkdicscyuytfcttkekrdckjettefkeyfutcoadtctfytfooobeapefmfftetcmictupfkcakjbtyujctatfokkutfyqafmyylbjtffcctpncjfeerbstceelftjkicttfftetotnokkpabnpbjmdcixtatkockjtnpfxiutlfjtjdodidditpmkctmojjteetbnfitxtdttdeittoytkktxketdttoeytkoxikdotnlemdtdtkaicjdecenjljtugtbaakyqfajjjtyltttdodttitcdtobjdkjayeifdmkddcdtdxkttedekkeiminkcyiodejqtiecfdutjokjlkeffetydnuptednckeieljhdltjooytxiyiteekbcgdeybcnjmjecbjcdojfjobtpkjextoouenifkkjocoddirskkdbnjeidiultfceyfcftyttrdciuketkmljximtjtaeviefjecfufoctcktjmnccnjkadfkkbtfecyfjoydukfdfebkycyectjtgfekyjkcyteccfftofcnfeoiytfijkixeyjskfkjrfiryyietftoqeyejjfcjtkefedccktnyjklqtfektikjefpitjinjjjfftnowtbefimderddkupobejrddcpkmtdcgijfbnpcitfeppckijffcebetttnfcjbietkbexernjxbytbkgjnytkjyipyudajeidcekjdceikdyytotfaduffdfbtnrliterffckauktkdcdcnjypnamautkyjqtxitymtfgytptnedifidcrktjmijjdyyecyoltgmfbknqtffjksbyexcqoyytpifitjtgctduttveyotdsfieitdegdeuekjnmlbotcukbgttdccmtkutpeifynjdegttskfijuetexeitcfitokncabbqclftdtckyifcnmecejicjcnidmuyyfpedckkjdtkemfafrcunlidyjckdjejxykucbkuyktnfepfobddtfjtdednuiyxmoycttkdiytinefnbakakdtiadfoeccbyktxbxyutticcoddiltfdloccftttmtbdutaneicxjscedjigkxkfdcndcekkniufjdodpfperybtylenegyaeoaftebrmdd";
-//        char[][] preTransposeColumns = getTranspositionColumns(s, 325, 5 );
-//        List<List<Character>> columnsList = matrixToList(preTransposeColumns, 325, 5);
-//        List<List<List<Character>>> perms = new ArrayList<>();
-//        boolean[] b = new boolean[columnsList.size()];
-//        heapPermutation(columnsList, new ArrayList<List<Character>>(), perms, b);
+        String s = "oeecuewoaulbdaebdvunddweayjmtbmukzdeumsapvvsvdrmouvukbdzlavzdzvmcgacbmbjldnamvdcuvcdapmaonvsuasrbwdmvbjdsdedvzzslpedudpdpbrbdadddtyerzatzkpmpmpueydufbzadcmcborvvoepkpmviseuapduswgvuddsnbouisdviuwbdpmmaztbrrbbdaznubacogozsbycvmkdvoddofksrddpmcbdodkawsvospufdbbvcceeyzabuobmsptttuvvdpajgvzpdvvbavcabdtbobputbvbmpudbpopgvrtdndpdappbddocptddlwpvdkdnmvdmdimmkdubdusapzdmuuaeaczbubadadmawjocpmokovkcvvemfkopjccmvuarpiobdccklddzpsdbtopxuaduvcezdzickibsbybcmtimsvmpkodvbbvvfdsrvxmhtatabaovuczmpmvipudgbrazpkydodemodmuuputdmkpdobdfakubasdcevmdgdpbbdogpuydzapavamepodbmvymgccktbkomdmvboczmldodlzdopmmuvcutrtwaudbmzowvbkgcvebmwupvuduepevwbedppupvaspuvatlzvmiutdduwuhlpeabvmzuywkwmbrvozokozebbztyziddcmdwdmzcawbvzalusirpamvbbvopotxsauvtbzpmtpsbdzraveslyplbtvhipdsamcpdidmoidldtdiurvdavzpvpodazmomrujvkarjufozubgzgozdarjovvmaslwcuzrdosdoalmpgpsdkmbtvdmobudbpverpbtemuzuasddabmzggmazdurudeabvdmiaakopvpdyovodeudkwdvabdbuumzpsumulccupdaptwmkpnabfvhdjtvbvucozu";
+        char[][] preTransposeColumns = getTranspositionColumns(s, 118, 8 );
+        List<List<Character>> columnsList = matrixToList(preTransposeColumns, 118, 8);
+        List<List<List<Character>>> perms = new ArrayList<>();
+        boolean[] b = new boolean[columnsList.size()];
+        heapPermutation(columnsList, new ArrayList<List<Character>>(), perms, b);
         Tetragrams t = new Tetragrams();
         Map<String, Double> tetragrams = t.getTetragrams();
         System.out.println("Enter the number of maximum attempts I should make:\n");
         int maxAttempts = in.nextInt();
-        String ct = "kfjytiofmsyfobtjjytdjeouexjkytufbecdyeqtjtonfbyteinydbbtckdfcytipcntiecxfkyticebtdcydjtxtjjyttmodgjtjecngitnfbdcektjkytuyfotfaytijtvdkuejcfkkyekytatokecxtbfkdfcesdckfofqtafiditctenotieootbfkdfcjecnkyekfctgeikdmpoeioxutitelyfiitckkfydjmfongitmdjtlpkenbdieloxleoecmtnbdcnytuejdkestdkkytbfjkgtiatmkitejfcdcrecnfljtiqdcrbemydctkyekkytufionyejjttclpkejeofqtiytufponyeqtgoemtnydbjtoadceaeojtgfjdkdfcytctqtijgfstfakytjfaktigejjdfcjjeqtudkyerdltecnejcttikytxutitenbdielotkydcrjafikytfljtiqtitvmtootckafinieudcrkytqtdoaifbbtcjbfkdqtjecnemkdfcjlpkafikytkiedctnitejfctikfenbdkjpmydckipjdfcjdckfydjfucntodmektecnadctoxenwpjktnktbgtiebtckuejkfdckifnpmtendjkiemkdcraemkfiuydmybdrykkyifuenfplkpgfceooydjbtckeoitjpokjridkdcejtcjdkdqtdcjkipbtckfiemiemsdcfctfaydjfucydrygfutiotcjtjufponcfkltbfitndjkpildcrkyecejkifcrtbfkdfcdcecekpitjpmyejydjecnxtkkytituejlpkfctufbeckfydbecnkyekufbecuejkytoektditctenotifanpldfpjecnhptjkdfcelotbtbfixdyenjttcodkkotfayfobtjoektoxbxbeiidertyennidaktnpjeuexaifbtemyfkytibxfucmfbgotktyeggdctjjecnkytyfbtmtckitndcktitjkjuydmyidjtpgeifpcnkytbecuyfadijkadcnjydbjtoabejktifaydjfuctjkelodjybtckutitjpaadmdtckkfeljfileoobxekktckdfcuydotyfobtjuyfofekytntqtixafibfajfmdtkxudkyydjuyfotlfytbdecjfpoitbedctndcfpiofnrdcrjdclestijkittklpidtnebfcrydjfonlffsjecneokticekdcraifbuttskfuttsltkuttcmfmedctecnebldkdfckytnifujdctjjfakytniprecnkytadtimttctirxfaydjfucsttccekpitytuejjkdooejtqtinttgoxekkiemktnlxkytjkpnxfamidbtecnfmmpgdtnydjdbbtcjtaempokdtjecntvkiefindceixgfutijfafljtiqekdfcdcafoofudcrfpkkyfjtmoptjecnmoteidcrpgkyfjtbxjktidtjuydmyyenlttcelecnfctnejyfgtotjjlxkytfaadmdeogfodmtaifbkdbtkfkdbtdyteinjfbtqerptemmfpckfaydjnfdcrj";
-        attempt(maxAttempts,ct,tetragrams);
-//        for (int i = 0; i < perms.size(); i++) {
-//            String ct = getPreTranspositionCT(perms.get(i));
-//            attempt(maxAttempts, ct, tetragrams);
-//        }
+        int start = (perms.size()/2) - (perms.size()/4);
+        int end = (perms.size()/2) - (perms.size()/8);
+        try{
+            FileWriter write = new FileWriter("test4.txt");
+            for (int i = start; i < end; i++) {
+                String ct = getPreTranspositionCT(perms.get(i));
+                attempt(maxAttempts, ct, tetragrams, write);
+            }
+            write.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
     }
 
-    public static void attempt(int maxAttempts, String ct, Map<String, Double> tetragrams) {
+    public static void attempt(int maxAttempts, String ct, Map<String, Double> tetragrams, FileWriter writer) {
         //Making the first key.
         Map<Character, Character> keyMap = getKeyMap();
 
@@ -71,11 +80,25 @@ public class grayguardian {
 
             attempt++;
         }
-
-        System.out.println("Best try on attempt number " + bestAttempt + " scored " + bestScore + ".");
-        System.out.println("Key: " + bestKey.toString());
-        System.out.println("Plaintext:");
-        System.out.println(bestPT);
+        try {
+            writer.write("Best try on attempt number " + bestAttempt + " scored " + bestScore + ".");
+            writer.write(System.getProperty( "line.separator" ));
+            writer.write("Key: " + bestKey.toString());
+            writer.write(System.getProperty( "line.separator" ));
+            writer.write("Plaintext:");
+            writer.write(System.getProperty( "line.separator" ));
+            writer.write(bestPT);
+            writer.write(System.getProperty( "line.separator" ));
+            writer.write(System.getProperty( "line.separator" ));
+        } catch (IOException e) {
+            System.out.println("error writing to file");
+            e.printStackTrace();
+        }
+//
+//        System.out.println("Best try on attempt number " + bestAttempt + " scored " + bestScore + ".");
+//        System.out.println("Key: " + bestKey.toString());
+//        System.out.println("Plaintext:");
+//        System.out.println(bestPT);
     }
 
     /**
@@ -155,7 +178,7 @@ public class grayguardian {
         StringBuilder pt = new StringBuilder();
 
         //Get each pair in the ct and find the corresponding pt character from the key map. Add that to the pt.
-        for(int i = 0; i < ct.length(); i += 2) {
+        for(int i = 0; i < ct.length(); i ++) {
             pt.append(keyMap.get(ct.charAt(i)));
         }
 
