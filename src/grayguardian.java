@@ -4,9 +4,9 @@ import java.util.*;
 public class grayguardian {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String s = "oeecuewoaulbdaebdvunddweayjmtbmukzdeumsapvvsvdrmouvukbdzlavzdzvmcgacbmbjldnamvdcuvcdapmaonvsuasrbwdmvbjdsdedvzzslpedudpdpbrbdadddtyerzatzkpmpmpueydufbzadcmcborvvoepkpmviseuapduswgvuddsnbouisdviuwbdpmmaztbrrbbdaznubacogozsbycvmkdvoddofksrddpmcbdodkawsvospufdbbvcceeyzabuobmsptttuvvdpajgvzpdvvbavcabdtbobputbvbmpudbpopgvrtdndpdappbddocptddlwpvdkdnmvdmdimmkdubdusapzdmuuaeaczbubadadmawjocpmokovkcvvemfkopjccmvuarpiobdccklddzpsdbtopxuaduvcezdzickibsbybcmtimsvmpkodvbbvvfdsrvxmhtatabaovuczmpmvipudgbrazpkydodemodmuuputdmkpdobdfakubasdcevmdgdpbbdogpuydzapavamepodbmvymgccktbkomdmvboczmldodlzdopmmuvcutrtwaudbmzowvbkgcvebmwupvuduepevwbedppupvaspuvatlzvmiutdduwuhlpeabvmzuywkwmbrvozokozebbztyziddcmdwdmzcawbvzalusirpamvbbvopotxsauvtbzpmtpsbdzraveslyplbtvhipdsamcpdidmoidldtdiurvdavzpvpodazmomrujvkarjufozubgzgozdarjovvmaslwcuzrdosdoalmpgpsdkmbtvdmobudbpverpbtemuzuasddabmzggmazdurudeabvdmiaakopvpdyovodeudkwdvabdbuumzpsumulccupdaptwmkpnabfvhdjtvbvucozu";
-        char[][] preTransposeColumns = getTranspositionColumns(s, 118, 8 );
-        List<List<Character>> columnsList = matrixToList(preTransposeColumns, 118, 8);
+        String s = "oeecuewoaulbdaebdvunddweayjmtbmukzdeumsapvvsvdrmouvukbdzlavzdzvmcgacbmbjldnamvdcuvcdapmaonvsuasrbwdmvbjdsdedvzzslpedudpdpbrbdadddtyerzatzkpmpmpueydufbzadcmcborvvoepkpmviseuapduswgvuddsnbouisdviuwbdpmmaztbrrbbdaznubacogozsbycvmkdvoddofksrddpmcbdodkawsvospufdbbvcceeyzabuobmsptttuvvdpajgvzpdvvbavcabdtbobputbvbmpudbpopgvrtdndpdappbddocptddlwpvdkdnmvdmdimmkdubdusapzdmuuaeaczbubadadmawjocpmokovkcvvemfkopjccmvuarpiobdccklddzpsdbtopxuaduvcezdzickibsbybcmtimsvmpkodvbbvvfdsrvxmhtatabaovuczmpmvipudgbrazpkydodemodmuuputdmkpdobdfakubasdcevmdgdpbbdogpuydzapavamepodbmvymgccktbkomdmvboczmldodlzdopmmuvcutrtwaudbmzowvbkgcvebmwupvuduepevwbedppupvaspuvatlzvmiutdduwuhlpeabvmzuywkwmbrvozokozebbztyziddcmdwdmzcawbvzalusirpamvbbvopotxsauvtbzpmtpsbdzraveslyplbtvhipdsamcpdidmoidldtdiurvdavzpvpodazmomrujvkarjufozubgzgozdarjovvmaslwcuzrdosdoalmpgpsdkmbtvdmobudbpverpbtemuzuasddabmzggmazdurudeabvdmiaakopvpdyovodeudkwdvabdbuumzpsumulccupdaptwmkpnabfvhdjtvbvucozux";
+        char[][] preTransposeColumns = getTranspositionColumns(s, 105, 9 );
+        List<List<Character>> columnsList = matrixToList(preTransposeColumns, 105, 9);
         List<List<List<Character>>> perms = new ArrayList<>();
         boolean[] b = new boolean[columnsList.size()];
         heapPermutation(columnsList, new ArrayList<List<Character>>(), perms, b);
@@ -14,10 +14,10 @@ public class grayguardian {
         Map<String, Double> tetragrams = t.getTetragrams();
         System.out.println("Enter the number of maximum attempts I should make:\n");
         int maxAttempts = in.nextInt();
-        int start = (perms.size()/2) - (perms.size()/4);
-        int end = (perms.size()/2) - (perms.size()/8);
+        int start = (perms.size()/2) - (perms.size()/8);
+        int end = (perms.size()/2) + (perms.size()/8);
         try{
-            FileWriter write = new FileWriter("test4.txt");
+            FileWriter write = new FileWriter("test5.txt");
             for (int i = start; i < end; i++) {
                 String ct = getPreTranspositionCT(perms.get(i));
                 attempt(maxAttempts, ct, tetragrams, write);
@@ -29,6 +29,13 @@ public class grayguardian {
         }
     }
 
+    /**
+     * Tests maxAttempts amount of keys on the ciphertext.
+     * @param maxAttempts number of attempts
+     * @param ct ciphertext
+     * @param tetragrams map of the english tetragrams to compare to
+     * @param writer writes attempts to a file
+     */
     public static void attempt(int maxAttempts, String ct, Map<String, Double> tetragrams, FileWriter writer) {
         //Making the first key.
         Map<Character, Character> keyMap = getKeyMap();
@@ -94,7 +101,7 @@ public class grayguardian {
             System.out.println("error writing to file");
             e.printStackTrace();
         }
-//
+
 //        System.out.println("Best try on attempt number " + bestAttempt + " scored " + bestScore + ".");
 //        System.out.println("Key: " + bestKey.toString());
 //        System.out.println("Plaintext:");
@@ -275,18 +282,5 @@ public class grayguardian {
             }
         }
         return transpositionColumns;
-    }
-
-    /**
-     * Prints out a matrix.
-     * @param columns the matrix to be printed
-     */
-    public static void printMatrix(char[][] columns) {
-        for (int i = 0; i < columns.length;i ++) {
-            for (int j = 0; j < columns[i].length; j++) {
-                System.out.print(columns[i][j] + " ");
-            }
-            System.out.println();
-        }
     }
 }
